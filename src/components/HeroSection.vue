@@ -1,14 +1,5 @@
 <template>
   <section class="hero" id="area">
-    <template id="sakura-template">
-      <img
-        src="../assets/cherry-blossom.svg"
-        width="40"
-        height="40"
-        style="filter: drop-shadow(0 0 4px #ff66cc)"
-      />
-    </template>
-
     <div class="intro-text">
       <div class="profession">
         <hr />
@@ -26,6 +17,7 @@
 <script setup>
 import { onMounted } from "vue";
 import gsap from "gsap";
+import cherryBlossomSvg from "../assets/cherry-blossom.svg";
 
 // Controlar el número máximo de flores
 const MAX_FLOWERS = 20;
@@ -34,15 +26,24 @@ let activeFlowers = 0;
 onMounted(() => {
   // Configurar animaciones de flores
   const area = document.getElementById("area");
-  const flowerTemplate = document.getElementById("sakura-template");
+
+  // Verificar que el elemento exista antes de continuar
+  if (!area) {
+    console.warn("Area element not found for flower animation");
+    return;
+  }
 
   function createFlower() {
     if (activeFlowers >= MAX_FLOWERS) {
       return;
     }
 
-    const clone = flowerTemplate.content.firstElementChild.cloneNode(true);
-    const flower = clone;
+    // Crear el elemento img directamente
+    const flower = document.createElement("img");
+    flower.src = cherryBlossomSvg;
+    flower.width = 40;
+    flower.height = 40;
+    flower.style.filter = "drop-shadow(0 0 4px #ff66cc)";
     flower.style.position = "absolute";
 
     const spacing = 5;
@@ -77,7 +78,11 @@ onMounted(() => {
     createFlower();
     setTimeout(scheduleFlower, 800 + Math.random() * 1200);
   }
-  scheduleFlower();
+  
+  // Iniciar las flores con un pequeño delay para asegurar que el DOM esté listo
+  setTimeout(() => {
+    scheduleFlower();
+  }, 100);
 
   // Animación del texto intro
   gsap.from(".intro-text", {

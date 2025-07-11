@@ -10,7 +10,7 @@
       </div>
 
       <div class="project-image">
-        <img src="../assets/img/Template.png" alt="Project Template" />
+        <img :src="templateImg" alt="Project Template" />
         <div class="project-overlay">
           <h4>F2 Admin Dashboard</h4>
           <p>
@@ -23,7 +23,7 @@
       </div>
 
       <div class="project-image">
-        <img src="../assets/img/Algorithm detail - In use - Increase.png" alt="Algorithm Detail" />
+        <img :src="algorithmImg" alt="Algorithm Detail" />
         <div class="project-overlay">
           <h4>Amaia</h4>
           <p>
@@ -37,7 +37,7 @@
       </div>
 
       <div class="project-image">
-        <img src="../assets/img/algorithms list.PNG" alt="Algorithms List" />
+        <img :src="algorithmsListImg" alt="Algorithms List" />
         <div class="project-overlay">
           <h4>Amaia Admin Dashboard</h4>
           <p>
@@ -49,7 +49,7 @@
       </div>
 
       <div class="project-image">
-        <img src="../assets/img/amaia landing.PNG" alt="Amaia Landing" />
+        <img :src="landingImg" alt="Amaia Landing" />
         <div class="project-overlay">
           <h4>Amaia Landing Page</h4>
           <p>
@@ -65,5 +65,11 @@
 </template>
 
 <script setup>
-// La lógica de scroll se manejará en el composable
+// Importar las imágenes explícitamente para Vite
+import templateImg from "@/assets/img/Template.png";
+import algorithmImg from "@/assets/img/Algorithm detail - In use - Increase.png";
+import algorithmsListImg from "@/assets/img/algorithms list.PNG";
+import landingImg from "@/assets/img/amaia landing.PNG";
 </script>
+
+<style src="@/assets/styles/projects.less" lang="less"></style>
