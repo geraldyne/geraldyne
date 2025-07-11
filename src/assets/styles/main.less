@@ -1,0 +1,26 @@
+/* Global Styles */
+@import "hero.less";
+@import "projects.less";
+@import "footer.less";
+
+/* Base Styles */
+[data-scroll-container] {
+  min-height: 100vh;
+  position: relative;
+}
+
+.work {
+  background: #000;
+  min-height: 100vh;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .credit {
+    font-family: Termina, sans-serif;
+    a {
+      color: var(--text-color);
+    }
+  }
+}
